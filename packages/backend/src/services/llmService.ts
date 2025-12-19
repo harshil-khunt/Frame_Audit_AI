@@ -12,21 +12,18 @@ export class LLMService {
   private model: string;
   private temperature: number;
   private maxTokens: number;
-  private timeout: number;
 
   constructor(
     apiKey: string,
     model: string = 'gemini-1.5-pro',
     temperature: number = 0.3,
-    maxTokens: number = 3000,
-    timeout: number = 30000
+    maxTokens: number = 3000
   ) {
     this.client = new GoogleGenerativeAI(apiKey);
     this.promptBuilder = new PromptBuilder();
     this.model = model;
     this.temperature = temperature;
     this.maxTokens = maxTokens;
-    this.timeout = timeout;
   }
 
   /**
@@ -120,7 +117,7 @@ export class LLMService {
   /**
    * Returns a demo response for testing when API quota is exceeded
    */
-  private getDemoResponse(scenario: string): Omit<AnalysisResult, 'metadata'> {
+  private getDemoResponse(_scenario: string): Omit<AnalysisResult, 'metadata'> {
     return {
       frameAudit: {
         assumptions: [
