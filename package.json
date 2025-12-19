@@ -8,7 +8,8 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspace=packages/frontend & npm run dev --workspace=packages/backend",
-    "build": "npm run build --workspaces",
+    "build": "cd packages/frontend && npm run build",
+    "build:all": "npm run build --workspaces",
     "test": "npm run test --workspaces",
     "test:properties": "npm run test:properties --workspaces"
   },
