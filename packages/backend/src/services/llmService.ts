@@ -15,9 +15,9 @@ export class LLMService {
 
   constructor(
     apiKey: string,
-    model: string = 'gemini-1.5-pro',
+    model: string = 'gemini-2.5-flash',
     temperature: number = 0.3,
-    maxTokens: number = 3000
+    maxTokens: number = 8000
   ) {
     this.client = new GoogleGenerativeAI(apiKey);
     this.promptBuilder = new PromptBuilder();

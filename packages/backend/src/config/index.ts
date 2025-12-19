@@ -7,9 +7,9 @@ dotenvConfig();
 export const config: SystemConfig = {
   llm: {
     provider: (process.env.LLM_PROVIDER as 'openai' | 'anthropic') || 'openai',
-    model: process.env.GEMINI_MODEL || 'gemini-1.5-pro',
+    model: process.env.GEMINI_MODEL || 'gemini-2.5-flash',
     temperature: parseFloat(process.env.LLM_TEMPERATURE || '0.3'),
-    maxTokens: parseInt(process.env.LLM_MAX_TOKENS || '3000', 10),
+    maxTokens: parseInt(process.env.LLM_MAX_TOKENS || '8000', 10),
     apiKey: process.env.GEMINI_API_KEY || '',
   },
   rateLimit: {
