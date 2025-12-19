@@ -110,6 +110,25 @@ export class LLMService {
       const parsed = JSON.parse(content);
       return parsed;
     } catch (error) {
+      // Log the problematic content for debugging
+      console.error('Failed to parse LLM response. Content length:', content.length);
+      console.error('Content preview:', content.substring(0, 500));
+      console.error('Content end:', content.substring(content.length - 500));
+      
+      // Try to fix common JSON issues
+      try {
+        // Remove any trailing incomplete content
+        const lastBrace = content.lastIndexOf('}');
+        if (lastBrace > 0) {
+          const truncated = content.substring(0, lastBrace + 1);
+          const parsed = JSON.parse(truncated);
+          console.log('Successfully parsed truncated JSON');
+          return parsed;
+        }
+      } catch (retryError) {
+        // If that doesn't work, throw the original error
+      }
+      
       throw new Error(`Failed to parse LLM response as JSON: ${error}`);
     }
   }

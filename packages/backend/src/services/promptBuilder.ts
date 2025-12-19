@@ -163,6 +163,10 @@ Remember: You are a diagnostic engine that classifies and exposes, not an adviso
 
 ${scenario}
 
-Provide your analysis as valid JSON following the structure defined in the system prompt.`;
+CRITICAL: Provide your analysis as valid, well-formed JSON following the structure defined in the system prompt. 
+- Ensure all strings are properly escaped
+- Do not include any text outside the JSON object
+- Do not truncate the response
+- Ensure all JSON objects and arrays are properly closed`;
   }
 }
